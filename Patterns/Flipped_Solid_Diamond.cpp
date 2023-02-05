@@ -11,19 +11,29 @@ int main()
         for(int col = 0; col < n-row; col++){
             cout << "*";
         }
-        for(int col = 0; col < row+1; col++){
-            cout << " ";
-        }
+        
         // Space wala full pyramid
-        for(int col=0; col < 2*row+1; col++){
+        for(int col=0; col < 2*row; col++){
             cout << " ";
         }
 
         // Half pyramid
-        for(int col = 0; col < row+1; col++){
+        for(int col = 0; col < n-row; col++){
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+    // Bottom Half
+
+    for(int row = 0; row < n; row++){
+        for(int col = 0; col < row + 1; col++){
+            cout << "*";
+        }
+        for(int col = 0; col < 2*n-2*row-2; col++){
             cout << " ";
         }
-        for(int col = 0; col < n-row; col++){
+        for(int col = 0; col < row+1; col++){
             cout << "*";
         }
         cout << endl;
