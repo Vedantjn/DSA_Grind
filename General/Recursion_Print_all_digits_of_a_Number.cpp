@@ -16,7 +16,10 @@ void printDigits(int n){
 }
 
 int main(){
-    int n = 647;
+    int n = 64700;
+    if(n == 0){
+        cout << 0 << endl;
+    }
 
     printDigits(n);
 }
