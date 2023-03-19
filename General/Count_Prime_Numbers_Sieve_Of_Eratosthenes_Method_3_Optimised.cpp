@@ -20,6 +20,7 @@ vector<bool>Sieve(int n){
     }
     return sieve;
 }
+
 int main(){
     vector<bool>sieve = Sieve(25);
     for(int i = 0; i <= 25; i++){

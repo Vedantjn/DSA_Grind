@@ -1,31 +1,33 @@
-#include<iostream>
-#include<limits.h>
+#include <iostream>
+#include <vector>
 using namespace std;
 
-int checkKey(string& str, int& n, char& key, int i, int& count){
-    // Base case
-    if(i >= n){
-        // Key not found
-        return -1;
+int checkTheKeyCount(string &word, int i, char &key, int &count) {
+    //base case
+    if(i>=word.length()) {
+        return count;
     }
 
-    // 1 case solve kro
-    if(str[i] == key){
+    //processsing
+    if(word[i]==key) {
         count++;
     }
 
-    // baki recursion sambhalega
-    return checkKey(str, n, key, i+1, count);
-}
+    //recursive relation
+    checkTheKeyCount(word, i+1, key, count);
+} 
 
-int main(){
-    string str = "vedantjain";
-    int n = str.length();
-    int i = 0;
-    int count = 0;
+int main() {    
+    string word;
+    cout<<"Enter the word : ";
+    getline(cin, word);
 
-    char key = 'j';
+    char key;
+    cout<<"Enter the key need to be found : ";cin>>key;
 
-    int ans = checkKey(str, n, key, i, count);
-    cout << ans << endl;
-}
+    int i=0, count=0;
+
+    int freq = checkTheKeyCount(word, i, key, count);
+
+    cout<<"The key is found "<<freq<<" times ";
+} 
