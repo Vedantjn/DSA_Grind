@@ -24,3 +24,5 @@ int main(){
     int i = 0;
     printPermutations(str, i);
 }
+
+// TC: O()
