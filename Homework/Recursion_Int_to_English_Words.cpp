@@ -18,4 +18,4 @@ int main(){
     int num = 123;
     cout << numberToWords(num) << endl;
     return 0;
-}
+} 
