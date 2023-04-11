@@ -12,6 +12,7 @@ class Node{
                 this->prev= NULL;
                 this->next = NULL;
         }
+
         Node(int data) {
                 this->data = data;
                 this->prev = NULL;
@@ -21,6 +22,7 @@ class Node{
         ~Node() {
                 cout << "Node with value: " << this->data << " deleted" << endl;
         }
+        
 };
 
 void print(Node* &head) {
@@ -31,7 +33,6 @@ void print(Node* &head) {
                 temp = temp->next;
         }
 }
-
 
 int getLength(Node* head) {
         int len = 0;
@@ -64,6 +65,7 @@ void insertAtHead(Node* &head, Node* &tail, int data) {
         }
 
 }
+
 void insertAtTail(Node* &head, Node* &tail, int data) {
 
         if(head == NULL) {
@@ -180,8 +182,6 @@ void deleteFromPos(Node* &head, Node* &tail, int position) {
         curr -> next = NULL;
         curr ->prev = NULL;
         delete curr;
-
-
 }
 
 int main() {
@@ -228,4 +228,5 @@ int main() {
         cout << endl;
 
         return 0;
+
 }
