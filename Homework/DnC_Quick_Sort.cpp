@@ -19,6 +19,7 @@ void quickSort(int a[], int start, int end){
         ++j;
     }
     ++i;
+    // i is the right position for the pivot element
     swap(a[i], a[pivot]);
 
     quickSort(a, start, i-1);
