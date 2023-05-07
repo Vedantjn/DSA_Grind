@@ -1,89 +1,123 @@
-#include<iostream>
-#include<queue>
+#include <iostream>
+#include <queue>
 using namespace std;
 
-class Node{
-    public:
-        int data;
-        Node* left;
-        Node* right;
-
-        Node(int data){
-            this->data = data;
-            left = NULL;
-            right = NULL;
-        }
+class Node
+{
+public:
+    int data;
+    Node *left;
+    Node *right;
+    Node(int data)
+    {
+        this->data = data;
+        left = NULL;
+        right = NULL;
+    }
 };
 
-Node* buildTree(){
-
-    int data;
-    cout << "Enter the data "<< endl;
-    cin >> data;
-    
-    if(data == -1){
+Node *buildTree(int data)
+{
+    // -1 data indicates that we have the leaf node (Base Case)
+    if (data == -1)
+    {
         return NULL;
     }
-
-    // Step 1
-    Node* root = new Node(data);
-
-    // Baki recursion
-
-    // Step 2
-    cout << "Enter data for left child of " << data << endl;
-    root->left = buildTree();
-
-    // Step 3
-    cout << "Enter data for right child of " << data << endl;
-    root->left = buildTree();
-
+    // Create the root node and hence solved 1 case
+    Node *root = new Node(data);
+    // Recursion will handle
+    int leftData;
+    cout << "Enter the data for left child of " << data << endl;
+    cin >> leftData;
+    root->left = buildTree(leftData);
+    int rightData;
+    cout << "Enter the data for right child of " << data << endl;
+    cin >> rightData;
+    root->right = buildTree(rightData);
     return root;
 }
+// Normal Level order traversal
 
+/*
 void levelOrderTraversal(Node* root){
-
+    // Empty tree
+    if(root == NULL){
+        return;
+    }
     queue<Node*>q;
+    // Push the root in queue
+    q.push(root);
+    // Run the loop until queue becomes empty
+    while(!q.empty()){
+        // Fetch front node and then pop
+        Node* temp = q.front();
+        q.pop();
+        cout<<temp->data<<" ";
+        // left child exists
+        if(temp->left){
+            q.push(temp->left);
+        }
+        // right child exists
+        if(temp->right){
+            q.push(temp->right);
+        }
+    }
+}
+*/
 
-    // Initially push root
+// To print the tree level wise
+void levelOrderTraversal(Node *root)
+{
+    // Empty tree
+    if (root == NULL)
+    {
+        return;
+    }
+    queue<Node *> q;
+    // Push the root in queue
     q.push(root);
     q.push(NULL);
-
-    while(!q.empty()){
-        // Step 1
-        Node* temp = q.front();
-
-        // Step 2
+    // Run the loop until queue becomes empty
+    while (!q.empty())
+    {
+        // Fetch front node and then pop
+        Node *temp = q.front();
         q.pop();
-
-        if(temp == NULL){
+        if (temp == NULL)
+        {
+            // go to the next line
             cout << endl;
-            if(!q.empty()){
+            // Marking for next level
+            if (!q.empty())
+            {
                 q.push(NULL);
             }
-        }        
-        else{
-            // Step 3
-            cout << temp->data << endl;
-
-            // Step 4
-            if(temp->left){
+        }
+        else
+        {
+            cout << temp->data << " ";
+            // left child exists
+            if (temp->left)
+            {
                 q.push(temp->left);
             }
-            if(temp->right){
+            // right child exists
+            if (temp->right)
+            {
                 q.push(temp->right);
             }
         }
     }
-
 }
 
-int main(){
-    Node* root = NULL;
-
-    root = buildTree();
-
+int main()
+{
+    Node *root;
+    int data;
+    cout << "Enter data for root node" << endl;
+    cin >> data;
+    root = buildTree(data);
+    cout << "Level order traversal is as follows" << endl;
     levelOrderTraversal(root);
-    
     return 0;
 }

@@ -1,102 +1,59 @@
-#include<iostream>
-#include<queue>
+#include <iostream>
 using namespace std;
-
-class Node{
-    public:
-        int data;
-        Node* left;
-        Node* right;
-
-        Node(int data){
-            this->data = data;
-            left = NULL;
-            right = NULL;
-        }
-};
-
-Node* buildTree(){
-
+class Node
+{
+public:
     int data;
-    cout << "Enter the data "<< endl;
-    cin >> data;
-    
-    if(data == -1){
+    Node *left;
+    Node *right;
+    Node(int data)
+    {
+        this->data = data;
+        left = NULL;
+        right = NULL;
+    }
+};
+Node *buildTree(int data)
+{
+    // -1 data indicates that we have the leaf node (Base Case)
+    if (data == -1)
+    {
         return NULL;
     }
-
-    // Step 1
-    Node* root = new Node(data);
-
-    // Baki recursion
-
-    // Step 2
-    cout << "Enter data for left child of " << data << endl;
-    root->left = buildTree();
-
-    // Step 3
-    cout << "Enter data for right child of " << data << endl;
-    root->left = buildTree();
-
+    // Create the root node and hence solved 1 case
+    Node *root = new Node(data);
+    // Recursion will handle
+    int leftData;
+    cout << "Enter the data for left child of " << data << endl;
+    cin >> leftData;
+    root->left = buildTree(leftData);
+    int rightData;
+    cout << "Enter the data for right child of " << data << endl;
+    cin >> rightData;
+    root->right = buildTree(rightData);
     return root;
 }
-
-void levelOrderTraversal(Node* root){
-
-    queue<Node*>q;
-
-    // Initially push root
-    q.push(root);
-    q.push(NULL);
-
-    while(!q.empty()){
-        // Step 1
-        Node* temp = q.front();
-
-        // Step 2
-        q.pop();
-
-        if(temp == NULL){
-            cout << endl;
-            if(!q.empty()){
-                q.push(NULL);
-            }
-        }        
-        else{
-            // Step 3
-            cout << temp->data << endl;
-
-            // Step 4
-            if(temp->left){
-                q.push(temp->left);
-            }
-            if(temp->right){
-                q.push(temp->right);
-            }
-        }
-    }
-}
-
 int height(Node* root){
+    // base case -> empty tree has height 0
     if(root == NULL){
         return 0;
     }
-
+    // left tree height
     int leftHeight = height(root->left);
+    // right tree height
     int rightHeight = height(root->right);
-
-    int ans = max(leftHeight, rightHeight) + 1;
+    // max of left subtree and right subtree and +1 to consider the root node
+    int ans = max(leftHeight,rightHeight) + 1;
+    // return the height 
     return ans;
 }
-
-int main(){
-    Node* root = NULL;
-
-    root = buildTree();
-
-    levelOrderTraversal(root);
-
-    cout << " Height " << height(root) << endl;
-    
-    return 0;
+int main()
+{
+    Node *root;
+    int data;
+    cout << "Enter data for root node" << endl;
+    cin >> data;
+    root = buildTree(data);
+    cout<<"Height of Binary Tree = "<<height(root)<<endl;
+    return 
 }
