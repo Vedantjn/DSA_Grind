@@ -9,7 +9,11 @@ class Solution{
     class Car{
         public:
         int pos, speed;
-        Car(int p, int s) : pos(p), speed(s) {};
+        // Car(int p, int s) : pos(p), speed(s) {};
+        Car(int p, int s){
+            this->pos = p;
+            this->speed = s;
+        }
     };
 
     static bool myComp(Car &a, Car &b){
