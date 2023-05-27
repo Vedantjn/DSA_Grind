@@ -26,7 +26,6 @@ pair<bool, int>solve(Node* root){
         pair<bool, int> make_pair(false, root->data);
         return p;
     }
-
 }
 
 int main(){
