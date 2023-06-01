@@ -197,19 +197,19 @@ Node* reverseusingLoop(Node* head ) {
         }
         return prev;
 }
-Node* reverseusingRecursion(Node* prev, Node* curr) {
-        //base case
-        if(curr == NULL) 
-                return prev;
 
-        Node* temp = curr ->next;
-        curr ->next = prev;
-        prev = curr;
-        curr = temp;
-
-        //recursion sambhal lega
-        return reverseusingRecursion(prev, curr);
+Node* reverseRecursive(Node* &prev,Node* &curr){
+    // Base case
+    if(curr == NULL){
+        return prev; // New head
+    }
+    // 1 case solve
+    Node* forward = curr->next;
+    curr->next = prev;
+    // recursive call
+    return reverseRecursive(curr,forward);
 }
+
 int main() {
 
         Node* head = NULL;
