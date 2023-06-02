@@ -18,7 +18,7 @@ public:
                     pred = pred->right;
                 }
 
-                // If right node is nullptr, then go left after establishing link from predecessor to current
+                // If pred right node is nullptr, then go left after establishing link from predecessor to current
                 if(pred->right == nullptr){
                     pred->right = curr;
                     curr = curr->left;
