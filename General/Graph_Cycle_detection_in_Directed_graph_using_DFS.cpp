@@ -2,8 +2,11 @@
 #include<unordered_map>
 #include<list>
 #include<queue>
+
 using namespace std;
+
 template<typename T>
+
 class Graph{
     public:
         unordered_map<T,list<T>>adjList;
